@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .theme {
+    --font-heading: var(--font-display);
+    --font-sans: var(--font-body);
+  }
+  :root {
+    --background: #eef6f4;
+    --foreground: #0f3d44;
+    --card: #f7fbfa;
+    --card-foreground: #0f3d44;
+    --popover: #f7fbfa;
+    --popover-foreground: #0f3d44;
+    --primary: #0f766e;
+    --primary-foreground: #ecfdf5;
+    --secondary: #d9eee9;
+    --secondary-foreground: #134e4a;
+    --muted: #dcebe7;
+    --muted-foreground: #3d6b73;
+    --accent: #ffedd5;
+    --accent-foreground: #9a3412;
+    --destructive: #c2410c;
+    --border: #b7d4ce;
+    --input: #b7d4ce;
+    --ring: #0d9488;
+    --radius: 0.5rem;
+
+    --ink: #0f3d44;
+    --teal: #0d9488;
+    --teal-deep: #115e59;
+    --copper: #c2410c;
+    --sand: #fff7ed;
+    --paper: #eef6f4;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--foreground);
+    background-color: var(--background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% -10%, rgba(13, 148, 136, 0.16), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 95% 5%, rgba(194, 65, 12, 0.08), transparent 50%),
+      linear-gradient(180deg, #f4faf8 0%, #e8f3f0 45%, #eef6f4 100%);
+    background-attachment: fixed;
+    font-family: var(--font-body), system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), system-ui, sans-serif;
+  }
+
+  .font-body {
+    font-family: var(--font-body), system-ui, sans-serif;
+  }
+
+  .font-mono-tech {
+    font-family: var(--font-mono), ui-monospace, monospace;
+  }
+}
+
+/* Motion */
+@keyframes board-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-0.5deg);
+  }
+}
+
+@keyframes trace-draw {
+  from {
+    stroke-dashoffset: 240;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.board-float {
+  animation: board-float 7s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.trace-draw {
+  stroke-dasharray: 240;
+  animation: trace-draw 2.4s ease forwards;
+}
+
+.pulse-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+.rise-in {
+  animation: rise-in 0.8s ease both;
+}
+
+.rise-in-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.rise-in-delay-2 {
+  animation-delay: 0.24s;
+}
+
+.rise-in-delay-3 {
+  animation-delay: 0.36s;
+}
+
+/* Circuit trace pattern for section backgrounds */
+.trace-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 H20 M40 30 H60 M30 0 V20 M30 40 V60' stroke='%230d9488' stroke-opacity='0.08' stroke-width='1' fill='none'/%3E%3Ccircle cx='30' cy='30' r='2' fill='%230d9488' fill-opacity='0.1'/%3E%3C/svg%3E");
+}
